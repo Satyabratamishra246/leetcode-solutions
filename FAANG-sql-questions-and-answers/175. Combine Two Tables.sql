@@ -1,3 +1,26 @@
+-- Question 1. 175. Combine Two Tables
+
+--Write a SQL query for a report that provides the following information for each person in the Person table, regardless if there is an address for each of those people:
+
+--FirstName, LastName, City, State
+
+--Solution:
+
+SELECT
+    p.FirstName
+    , P.LastName
+    , A.City
+    , A.State
+FROM
+    Person P
+LEFT JOIN 
+    Address A 
+    ON P.PersonId = A.PersonId;
+
+
+
+--REFERENCES
+
 -- Create the Person table
 CREATE TABLE Person (
     PersonId INT PRIMARY KEY,
@@ -41,22 +64,3 @@ VALUES
 (8, 9, 'Miami', 'FL'),            -- Address for person with a NULL last name
 (9, 9, NULL, NULL),               -- Address with NULL city and state (edge case)
 (10, 7, '', '');                  -- Address with empty city and state (edge case)
-
--- Question 1. 175. Combine Two Tables
-
---Write a SQL query for a report that provides the following information for each person in the Person table, regardless if there is an address for each of those people:
-
---FirstName, LastName, City, State
-
---Solution:
-
-SELECT
-    p.FirstName
-    , P.LastName
-    , A.City
-    , A.State
-FROM
-    Person P
-LEFT JOIN 
-    Address A 
-    ON P.PersonId = A.PersonId;
